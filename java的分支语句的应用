@@ -1,0 +1,183 @@
+//一个简单的购物系统的练习
+import java.math.*;
+import java.util.Scanner;
+
+public class Test05 {
+ public static void main(String[] args){
+	 
+	 System.out.println("==================研泰购物管理系统==================");
+	 System.out.println("========================1.登录===================");
+	 System.out.println("========================2.退出===================");
+	 System.out.println("=====================请选择相关操作=================");
+	 Scanner s =new Scanner(System.in);
+	 int choice1 = s.nextInt();
+	 if(choice1==1){
+		 int count =0;
+		 while(1==1){
+			 String username1 = "aaa";
+			 String pwd1 = "123";
+			 System.out.print("请输入用户名：");
+			 String username = s.next();
+			 System.out.print("请输入密码：");
+			 String pwd = s.next();
+			 if(username.equals(username1) && pwd.equals(pwd1)){
+				 while(1==1){
+					 System.out.println("==================主菜单==================");
+					 System.out.println("1.客户信息管理");
+					 System.out.println("2.购物结算");
+					 System.out.println("3.真情回馈");
+					 System.out.println("4.注销");
+					 System.out.print("请选择：");
+					 int choice2=s.nextInt();
+					 
+					 if(choice2==1){
+						 System.out.println("==================客户信息管理==================");
+						 System.out.println("1.添加用户");
+						 System.out.println("2.年龄统计");
+						 System.out.println("3.返回主菜单");
+						 System.out.print("请选择：");
+						 int choice21=s.nextInt();
+						 
+						 if (choice21==1){
+							 String clist="";
+							 while(1==1){
+								 System.out.print("请输入姓名：");
+								 String name1=s.next();
+								 System.out.print("请输入年龄：");
+								 int age1=s.nextInt();
+								 clist=clist+name1+"----"+age1+"\n";
+								 System.out.print("添加成功，继续添加请输入1，输入其他内容停止：");
+								 String choice3=s.next();
+								 if("1".equals(choice3)){
+									 continue;
+								 }else{
+									 System.out.print(clist);
+									 break;
+								 }
+							 }
+							 
+						 }else if(choice21==2){
+							 int i =1;
+							 int up30=0;
+							 int down30=0;
+							 
+							 while(i<=10){
+								 System.out.print("请输入姓名：");
+								 String name2=s.next();
+								 System.out.print("请输入年龄：");
+								 int age2=s.nextInt();
+								 if (age2>=30){
+									 up30++;
+								 }else{
+									 down30++;
+								 }
+								 i++;
+							 }
+							 
+							 System.out.println("30岁以上的比例是"+up30/10.0*100+"%");
+							 System.out.println("30岁以下的比例是"+down30/10.0*100+"%");
+							 
+						 }else if(choice21==3){
+							 continue; 
+						 }else{
+							 System.out.println("请输入一个受支持的选项");
+							 continue;
+						 }
+						 
+						
+					 }else if(choice2==2){
+						 System.out.println("商品信息：《101.苹果  5元》  《102.梨子  6元》  《103.香蕉  3元》");
+						 double total=0;
+						 while(1==1){
+							 System.out.print("请输入商品编号：");
+							 int pid=s.nextInt();
+							 System.out.print("请输入商品商品数量：");
+							 int pnum=s.nextInt();
+							 String pName="";
+							 double pPrice=0;
+							 if(pid==101){
+								 pName="苹果";
+								 pPrice=5;
+							 }else if(pid==102){
+								 pName="梨子";
+								 pPrice=6;
+							 }else if(pid==103){
+								 pName="香蕉";
+								 pPrice=3;
+							 }else{
+								 System.out.println("暂无此商品");
+							 }
+							 
+							 double t=pPrice*pnum;
+							 total=total+t;
+							 System.out.println("您当前购买的是："+pName+"数量为："+pnum+"价格为："+t);
+							 
+							 System.out.print("结算请按1，输入其他内容则继续购买：");
+							 String choice = s.next();
+							 
+							 if("1".equals(choice)){
+								 break;
+							 }
+							  
+						 }
+						 
+						 System.out.println("合计应付款："+total);
+						 System.out.println("请输入付款金额：");
+						 double money =s.nextDouble();
+						 if(money<total){
+							 System.out.println("金额不足");
+						 }else{
+							 System.out.println("收到"+money+"元，找零"+(money-total)+"元");
+							 System.out.println("欢迎下次光临");
+						 }
+						 
+					 }else if(choice2==3){
+						 System.out.println("欢迎来到回馈系统(1-5数字为一等奖，6-15为二等奖)。。。。正在生成幸运数字。。。。。。");
+						 double r=Math.random();
+						 int n=(int)(r*100+1);
+						 System.out.println("幸运数字是"+n);
+						 if(n<=5){
+							 System.out.println("恭喜荣获一等奖：500元优惠券");
+						 }else if(n>5 && n<=15){
+							 System.out.println("恭喜荣获二等奖：10元花费券");
+						 }else{
+							 System.out.println("谢谢惠顾！");
+						 }
+						 
+						 
+						 
+					 }else if(choice2==4){
+						 continue;
+						 
+					 }else{
+						 System.out.println("输入错误！");
+						 continue;
+					 }
+					 
+				 }
+				
+				 
+				 
+			 }else{
+				 if(count<3){
+					 count++;
+					 System.out.println("输入错误，累计错误"+count+"次，还有"+(3-count)+"次机会,请重新输入");
+					 continue;
+					 
+				 }else{
+					 System.out.println("您已经输入错误三次，系统自动退出，请重新运行");
+					 break;
+				 }
+			 }
+		 }
+		 
+		 
+	 }else if(choice1==2){
+		 System.out.println("退出成功！");
+		 
+		 
+	 }else{
+		 System.out.println("请输入有效的参数来选择相应的操作");
+	 }
+ }
+}
