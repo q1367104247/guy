@@ -1,0 +1,91 @@
+//初识数组
+public class Test06 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+//		//动态初始化
+//		int[] a=new int[5]; 
+//		a[0]=1;
+//		a[1]=2;
+//		a[2]=3;
+//		a[3]=4;
+//		a[4]=5;
+//		
+//		//静态初始化
+//		int[]b=new int[] {1,2,3,4,5};
+//		int[]c={1,2,3,4};
+//		
+//		String[] st={"a","b","c","d","e","f"};
+//		System.out.println(st[0]);
+//		System.out.println(st.length);//获取数组长度
+//		
+//		//数组遍历，使用循环的方式取出数组中的每一个值
+//		int[] q={32,5,1232,65,12};
+//		int i=0;
+//		while(i<=4){
+//			System.out.println(q[i]);
+//			i++;
+//		}
+//		//当不确定数组长度的时候，需要遍历打出，可以使用length参数来实现
+//		String[] w={"sd","2123","sda","爱你"};
+//		for(int j=0;j<=w.length-1;j++){
+//			System.out.println(w[j]);
+//		}
+//		
+//		
+//		//for-each循环
+//		double[] x={1.1,2.2,3.3,4.4,5.5,6.6};
+//		for(double z:x){
+//			System.out.println("当前循环的值是"+z);
+//		}
+//		
+//		//数组一旦初始化长度，便无法改变,可以采用创建一个新数组，把老数组的值赋给新数组
+//		int[] oldArray={1,2,3,4,5,6,7};
+//		int[] newArray=new int[oldArray.length+1];
+//		
+//		for(int m=0;m<=oldArray.length-1;m++){
+//			newArray[m]=oldArray[m];
+//		}
+//		newArray[newArray.length-1]=0;
+//		for(int v:newArray){
+//			System.out.println(v);
+//		}
+//		
+		
+//		//在数组某个位置添加一个新元素
+//		int[] oldArray={1,2,3,4,5,6,7};
+//		int[] newArray=new int[oldArray.length+1];
+//		for(int m=0;m<=newArray.length-1;m++){
+//			if(m<3){
+//				newArray[m]=oldArray[m];
+//			}else if(m==3){
+//				newArray[m]=0;
+//			}else{
+//				newArray[m]=oldArray[m-1];
+//			}
+//		}
+//		for(int x:newArray){
+//			System.out.println(x);
+//		}
+		
+		//在数组中删除一个元素
+		int[] oldArray={1,2,3,666,4,5,6,};
+		int[] newArray=new int[oldArray.length-1];
+		
+		for(int i=0;i<=newArray.length-1;i++){
+			if(i<3){
+				newArray[i]=oldArray[i];
+			}else{
+				newArray[i]=oldArray[i+1];
+			}
+		}
+		for(int x:newArray){
+			System.out.println(x);
+		}
+
+
+	}
+
+}
