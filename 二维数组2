@@ -1,0 +1,58 @@
+//二维数组
+
+import java.util.Arrays;
+
+public class Test09 {
+
+	
+	public static void main(String[] args) {
+		int [][] array1=new int[3][5];
+		array1[0][0]=5;
+		
+		int [][] array2={{1,2,3,4,5},{1,2,3,4,5},{1,2,3,4,5},{1,2,3,4,5},{1,2,3,4,5}};
+		//System.out.println(array2[1][3]);
+
+		//遍历二维数组
+		int count=0;
+		for(int[] i:array2){
+			for(int j:i){
+				//System.out.println(j);
+				count++;
+			}
+		}
+		
+		int array3[] =new int[count];
+		int s =0;
+		for(int[] i:array2){
+			for(int j:i){
+				array3[s]=j;
+				s++;
+				
+			}
+		
+		}
+		
+		for(int x:array3){
+			System.out.println(x);
+			
+			
+			
+		}
+		//arrays工具类
+		
+		Arrays.sort(array3);
+		
+		for(int z:array3){
+			System.out.println(z);
+		}
+		//降序取数组的话，需要使用sort排完序后反向取值
+		for(int b=array3.length-1;b>=0;b--){
+			System.out.println(array3[b]);
+			
+		}
+		//数组转成字符串
+		String n =Arrays.toString(array3);
+		System.out.println(n);
+	}
+
+}
