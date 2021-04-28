@@ -1,0 +1,74 @@
+public class Test11 {
+
+    //定义方法中的参数叫形参，方法体重则为实参
+	public static void function1(int num) {
+		System.out.println("方法已经执行");
+		System.out.println("传入的参数是"+num);
+
+	}
+	//单个参数
+	public static void function2(double money){
+		System.out.println("存入的金额为"+money);
+		money=money*(1+0.03);
+		System.out.println("一年后的金额为"+money);
+	}
+	
+	//多个参数
+	public static void function3(double money,String name){
+		System.out.println("存入的金额为"+money);
+		money=money*(1+0.03);
+		System.out.println(name+",你好，一年后的金额为"+money);
+		
+	}
+	
+	//形参为数组
+	public static void function4(int[] scores){
+		int sum=0;
+		for(int x:scores){
+			sum=sum+x;
+		}
+		double avg=sum*1.0/(scores.length);
+		System.out.println(avg);
+		
+	}
+	
+	//返回值
+	public static double function5(int[] scores){
+		int sum=0;
+		for(int x:scores){
+			sum=sum+x;
+		}
+		double avg=sum*1.0/(scores.length);
+		System.out.println(avg);
+		return avg;
+	}
+	
+	public static String zhazhiji(String f){
+		System.out.println("working...");
+		System.out.println("complete!");
+		System.out.println("you get a cup of"+" "+f);
+		return f;
+	}
+	
+	public static void main(String[] args){
+		function1(32);
+		function2(432232);
+		function3(5324234,"李四");
+		int[] ss={56,77,65,23,99,88};
+		function4(ss);
+		
+		double result =function5(ss);
+		if(result>=90){
+			System.out.println("优秀");
+		}else if(result>=80){
+			System.out.println("良好");
+		}else{
+			System.out.println("一般吧");
+		}
+		
+		
+		String zhi=zhazhiji("apple");
+	}
+	
+	
+}
