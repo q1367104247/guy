@@ -1,0 +1,30 @@
+//变量的作用域范围
+public class Test02 {
+	static String test="这个是类中的变量，只要是类中方法都可以引用！";
+	
+	public static void f1(){
+		//定义方法变量，只能在这个方法中访问
+		String f1f="方法中的变量,只有本方法体内可以访问";
+		//如果类中变量名跟方法中变量名相同，优先使用方法中的变量
+		int test=12312;
+		System.out.println(test);
+	}
+	
+	public static void f2(){
+		System.out.println(test);
+	}
+	
+	public static void f3(){
+		System.out.println(test);
+	}
+	
+
+	
+	public static void main(String[] args) {
+		f1();
+		f2();
+		f3();
+
+	}
+
+}
