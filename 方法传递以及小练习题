@@ -1,0 +1,67 @@
+public class Test01 {
+
+
+	//方法传递
+	public static void f1(){
+		System.out.println("方法1被调用");
+	}
+	
+	public static void f2(){
+		System.out.println("方法2被调用");
+	}
+	
+	public static void f(){
+		System.out.println("准备调用方法1和方法2");
+		f1();
+		f2();
+	}
+	//递归，调用方法本身
+	public static int sum(int i,int result){
+		result=result+i;
+		i+=1;
+		if(i<=100){
+			result=sum(i,result);
+		}
+		
+		return result;
+	}
+	
+	//小练习题，计算圆柱体体积
+	
+	public static double v(double r,double h){
+		double vi=3.14*r*r*h;
+		return vi;
+	}
+	
+	//小练习题，修改密码的方法
+	
+	public static String pwd(String opwd,String npwd){
+		String msg="error";
+		String oldpwd="123456";
+		if(opwd.equals(oldpwd)){
+			if(npwd.length()>=6){
+				msg="right";
+				oldpwd=npwd;
+				System.out.println("修改成功！");
+			}else{
+				System.out.println("密码不符合安全策略！");
+			}
+		}else{
+			System.out.println("密码输入错误！");
+		}
+		return msg;
+		
+	}
+	
+	public static void main(String[] args) {
+		f();
+		int s=sum(0,0);
+		System.out.println(s);
+		
+		double yuan =v(5.1,9);
+		System.out.println("圆柱体的体积为："+yuan);
+		
+		String changePwd=pwd("123456","4321432");
+	}
+
+}
