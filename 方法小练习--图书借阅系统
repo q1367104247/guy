@@ -1,0 +1,218 @@
+//练习--图书借阅系统
+import java.util.Scanner;
+
+public class Test03 {
+	
+	
+	//迷你图书借阅系统
+	static String [] nameArray= {"《java从开始到放弃》","《mysql从删库到跑路》","《知乎从谢邀到谢顶》","《渗透从入门到入狱》","bbb"};//书名
+	static String [] authorArray= {"意志不坚张三","随便瞎搞李四","不懂装懂王五","法外狂徒赵六","bbb"};//作者
+	static int [] stateArray= {1,1,1,2,1};//状态，1：可借，2：不可借
+	static int [] borrowCount= {88,99,77,999,23};//累计借的次数
+	
+	
+	static Scanner s = new Scanner(System.in);
+	
+	//归还图书
+	public static void returnBooks(){
+		System.out.println("请输入书名：");
+		String name=s.next();
+		String msg="图书不存在";
+		for(int i=0;i<nameArray.length;i++){
+			if(nameArray[i].equals(name)){
+				if(stateArray[i]==2){
+					msg="图书可还";
+					System.out.println("请输入租借天数");
+					int days=s.nextInt();
+					if(days>31 && days<1){
+						System.out.println("输入错误");
+					}else{
+						stateArray[i]=1;
+						double rent=2*days;
+						System.out.println(name+"归还成功"+",需要支付租金为"+rent);
+						showBooks(nameArray,authorArray,stateArray,borrowCount);
+					}
+				}else{
+					msg="错误，图书未被借出";
+				}
+			}
+		}
+	}
+	
+	//借出图书
+	public static void borrowBooks(){
+		System.out.println("请输入书名：");
+		String name=s.next();
+		String msg="图书不存在";
+		for(int i=0;i<nameArray.length;i++){
+			if(nameArray[i].equals(name)){
+				if(stateArray[i]==1){
+					msg="图书可借";
+					borrowCount[i]+=1;
+					stateArray[i]=2;
+				}else{
+					msg="抱歉，图书已被借出";
+				}
+			}
+		}
+		if(msg.equals("图书可借")){
+			System.out.println(name+"借出成功");
+			showBooks(nameArray,authorArray,stateArray,borrowCount);
+		}else{
+			System.out.println(msg);
+		}
+	}
+	
+	//删除图书
+	public static void delBooks(){
+		System.out.println("请输入书名：");
+		String name=s.next();
+		int index=0;
+		int msg=1;
+		for(int i=0;i<nameArray.length;i++){
+			if(nameArray[i].equals(name)){
+				index=i;
+				msg=2;
+			}
+		}
+		
+		if(msg==2){
+			String[] nameArray2=new String [nameArray.length-1];
+			String[] authorArray2=new String [authorArray.length-1];
+			int[] stateArray2=new int [stateArray.length-1];
+			int[] borrowCount2=new int [borrowCount.length-1];
+			for(int i=0;i<nameArray2.length;i++){
+				if(i<index){
+					nameArray2[i]=nameArray[i];
+					authorArray2[i]=authorArray[i];
+					stateArray2[i]=stateArray2[i];
+					borrowCount2[i]=borrowCount2[i];
+				}else if(i>=index){
+					nameArray2[i]=nameArray[i+1];
+					authorArray2[i]=authorArray[i+1];
+					stateArray2[i]=stateArray2[i+1];
+					borrowCount2[i]=borrowCount2[i+1];
+				}
+			}
+			System.out.println("删除成功");
+			showBooks(nameArray2,authorArray2,stateArray2,borrowCount2);
+		}else{
+			System.out.println("此图书不存在");
+		}
+	}
+	
+	
+	//增加图书
+	public static void addBooks(){
+		if(nameArray.length>=6){
+			System.out.println("书架已满，无法放入更多书籍");
+		}else{
+			System.out.println("请输入书名：");
+			String name=s.next();
+			System.out.println("请输入作者：");
+			String author=s.next();
+			
+			int msg1=1;
+			for(String n:nameArray){
+				if(n.equals(name)){
+					msg1=2;
+				}
+			}
+			if(msg1==1){
+				String[] nameArray2=new String [nameArray.length+1];
+				String[] authorArray2=new String [authorArray.length+1];
+				int[] stateArray2=new int [stateArray.length+1];
+				int[] borrowCount2=new int [borrowCount.length+1];
+				for(int i=0;i<nameArray.length;i++){
+					nameArray2[i]=nameArray[i];
+					authorArray2[i]=authorArray[i];
+					stateArray2[i]=stateArray2[i];
+					borrowCount2[i]=borrowCount2[i];	
+				}
+				nameArray2[nameArray2.length-1]=name;
+				authorArray2[authorArray2.length-1]=author;
+				stateArray2[stateArray2.length-1]=1;
+				borrowCount2[borrowCount2.length-1]=0;
+				System.out.println("添加成功，添加的书名"+name);
+				showBooks(nameArray2,authorArray2,stateArray2,borrowCount2);
+				
+			}else{
+				System.out.println("此书已经添加过了");
+			}
+		}
+	}
+	
+	//显示全部书籍
+	public static void showBooks(String[] a,String[] b,int[] c,int[] d){
+		System.out.println("书名-----"+"作者-------"+"状态-------"+"借出次数");
+		for(int i=0;i<a.length;i++){
+			String s ="不可借";
+			if(c[i]==1){
+				s="可借";
+			}
+			
+			System.out.println(a[i]+"----"+b[i]+"----"+s+"----"+d[i]);
+		}
+	}
+	
+	//定义登录方法
+	public static String login(){
+		String msg="错误";
+		String uname="aaa";
+		String upwd="123";
+		System.out.println("请输入用户名：");
+		String name=s.next();
+		System.out.println("请输入密码：");
+		String pwd=s.next();
+		if(name.equals(uname) && pwd.equals(upwd)){
+			msg="正确";
+			System.out.println("登录成功!");
+		}
+		return msg;
+	}
+	
+	//显示主菜单
+	public static void showMeun(){
+		System.out.println("欢迎来到图书管理系统");
+		System.out.println("------------主菜单------------");
+		System.out.println("1.查看所有图书");
+		System.out.println("2.增加图书");
+		System.out.println("3.删除图书");
+		System.out.println("4.借出图书");
+		System.out.println("5.归还图书");
+		System.out.println("6.退出");
+		System.out.println("请选择菜单编号：");
+		
+	} 
+
+	
+	public static void main(String[] args) {
+		while(1==1){
+			String msg=login();
+			if("失败".equals(msg)){
+				System.out.println("登录失败，请重新登陆");
+				continue;
+			}else if("正确".equals(msg)){
+				while(1==1){
+					showMeun();
+					int choice1=s.nextInt();
+					if(choice1==1){
+						showBooks(nameArray,authorArray,stateArray,borrowCount);
+					}else if (choice1==2){
+						addBooks();
+					}else if (choice1==3){
+						delBooks();
+					}else if (choice1==4){
+						borrowBooks();
+					}else if (choice1==5){
+						returnBooks();
+					}
+				}
+				
+			}
+			
+		}
+
+	}
+
+}
