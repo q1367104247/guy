@@ -1,0 +1,56 @@
+package test03.pojo;
+
+public class Dog {
+	//定义类的属性
+	String jack;
+	String color;
+	int age;
+	
+	//定义构造方法
+	public Dog(String jack,String color,int age){
+		this();//手动调用无参的构造方法
+		//构造方法是为了给对象的属性赋值
+		System.out.println("该方法已经被调用了");
+		this.jack=jack;
+		this.color=color;
+		this.age=age;
+	}
+	
+	public Dog() {
+		
+	}
+
+	//定义类的方法
+	public void eat(){
+		System.out.println("吃");
+	}
+	
+	public void run(){
+		System.out.println("跑");
+	}
+	
+	public void getSelf(){
+		System.out.println(this);
+	}
+	public static void main(String[] args){
+		Dog dog1=new Dog("heihie","aa",1);
+		
+		//给对象属性赋值   对象名.属性名
+		dog1.jack="乖乖";
+		dog1.color="花色";
+		dog1.age=3;
+		
+		//获取对象的值
+		System.out.print(dog1.jack);
+		
+		//调用方法
+		dog1.eat();
+		Dog dog2=new Dog("heihei","red",3);
+		System.out.println(dog2);
+		dog2.getSelf();
+		
+	}
+	
+	
+	
+}
