@@ -1,0 +1,34 @@
+//方法重载,同方法不同参数，会调用相应的构造方法
+package test03.pojo;
+
+public class Addsum {
+	
+	public int add(int a,int b){
+		int s =a+b;
+		return s;
+	}
+	
+	public int add(int a,int b,int c){
+		int s =a+b+c;
+		return s;
+	}
+	
+	public int add(int a,int b,int c,int d){
+		int s =a+b+c+d;
+		return s;
+	}
+	
+	public int add(int a,int b,int c,int d,int e){
+		int s =a+b+c+d+e;
+		return s;
+	}
+
+
+	
+	public static void main(String[] args) {
+		Addsum as=new Addsum();
+		int s =as.add(1,1,1,100);
+		System.out.println(s);
+	}
+
+}
