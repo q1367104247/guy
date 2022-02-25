@@ -1,0 +1,39 @@
+package unit9;
+
+public class Dog {
+	private String name;//私有属性，不可外部访问
+	private int age;
+	private String color;
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge(String uname, String upwd) {
+		if(uname=="aaa" && upwd=="111") {
+			return age;	
+		}else{
+			return 0;
+		}
+		
+	}
+	public void setAge(int age) {
+		if(age>=0 && age<=20){
+			this.age = age;
+		}else{
+			System.out.println("error");
+		}
+		
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
+}
