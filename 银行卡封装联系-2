@@ -1,0 +1,13 @@
+package unit9;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		Card c =new Card();
+		c.setCnum("1234512345123412341");
+		c.setCpwd("123456");
+		c.cun(199999);
+
+	}
+
+}
