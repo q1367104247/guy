@@ -1,0 +1,68 @@
+package unit9;
+
+public class Card {
+	
+	private String cnum;
+	private String cpwd;
+	private double cbalence;
+	
+	
+	public String getCnum() {
+		return cnum;
+	}
+	public void setCnum(String cnum) {
+		if(cnum.length()==19) {
+			this.cnum = cnum;
+			System.out.println("有效！");
+		}else{
+			System.out.println("error");
+		}
+		
+	}
+	public String getCpwd() {
+		return cpwd;
+	}
+	public void setCpwd(String cpwd) {
+		if(cpwd.length()==6) {
+			this.cpwd = cpwd;
+			System.out.println("设置有效");
+		}else{
+			System.out.println("error");
+		}
+		
+	}
+	public double getCbalence() {
+		return cbalence;
+	}
+	public void setCbalence(double cbalence) {
+		if(cbalence>=0 && cbalence<100000) {
+			this.cbalence = cbalence;
+			System.out.println("存入成功");
+			System.out.println("当前余额："+this.cbalence);
+		}else{
+			System.out.println("error");
+		}
+		
+	}
+	
+	private void RaseBalence() {
+		System.out.println("您本次存入金额超过10W,系统自动为您增加本次存入金额的0.1%的收入");
+		this.cbalence=this.cbalence+this.cbalence*0.001;
+		System.out.println("当前余额："+this.cbalence);
+	}
+	
+	public void cun(int money) {
+		if(money>0) {
+			this.cbalence=this.cbalence+money;
+			if(money>=100000) {
+				RaseBalence();
+			}
+			
+			System.out.println("存款成功，存入"+money+"元，余额"+this.cbalence+"元");
+		}
+	}
+	
+	
+	
+
+}
