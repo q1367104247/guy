@@ -1,0 +1,4 @@
+private（私有的）:只能在本类中访问
+默认（friendly）：只能在本类和同包中访问
+protected：：可在本类，同包，以及子类中访问
+public：都可访问
