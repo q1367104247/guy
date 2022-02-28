@@ -1,0 +1,23 @@
+package unit10;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		
+		//子类继承父类后，自动拥有父类非私有的属性何方法
+		//一个父类可以被多个子类继承
+		//一个子类只能继承一个父类
+		Dog d = new Dog();
+		d.eat();
+		
+		Cat c =new Cat();
+		c.run();
+		//除了继承父类，也可以子类自己定义
+		//父类和子类方法以及属性重名，优先调用子类的
+		//方法重写一般在子类需要自己 的相关属性方法需要用到
+		d.jump();
+		c.climb();
+
+	}
+
+}
