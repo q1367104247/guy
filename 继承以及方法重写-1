@@ -1,0 +1,16 @@
+package unit10;
+//父类，定义公共属性何方法
+public class Pet {
+	String nick;//父类的属性不要设置为私有
+	int age;
+	String color;
+	
+	
+	public void eat(){
+			System.out.println("在吃");
+	}
+	
+	public void run(){
+		System.out.println("在跑");
+	}
+}
