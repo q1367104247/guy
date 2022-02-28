@@ -1,0 +1,11 @@
+package unit10;
+
+public class Cat extends Pet{
+	
+	String sex;
+	
+	public void climb() {
+		System.out.println("猫爬树");
+	}
+
+}
