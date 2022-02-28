@@ -1,0 +1,11 @@
+package unit10;
+
+public class Dog extends Pet{
+	
+	String strain;
+	
+	public void jump() {
+		System.out.println("狗仔叫");
+	}
+
+}
